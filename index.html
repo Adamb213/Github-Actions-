@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Boudaoud | Portfolio</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* HEADER */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 18px 0;
+    }
+
+    .logo{
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #f8fafc;
+    }
+
+    .logo span{
+      color:#38bdf8;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      list-style:none;
+      font-size:0.95rem;
+      color:#cbd5e1;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+      transition:0.3s;
+    }
+
+    /* HERO */
+    .hero{
+      min-height: 92vh;
+      display:flex;
+      align-items:center;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,0.15), transparent 25%),
+        radial-gradient(circle at left, rgba(59,130,246,0.12), transparent 30%),
+        #0f172a;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items:center;
+      padding: 70px 0;
+    }
+
+    .hero-text h1{
+      font-size: clamp(2.6rem, 5vw, 4.7rem);
+      line-height:1.05;
+      margin-bottom:18px;
+      color:#f8fafc;
+    }
+
+    .hero-text h1 span{
+      color:#38bdf8;
+    }
+
+    .hero-text p{
+      font-size:1.05rem;
+      color:#cbd5e1;
+      max-width:650px;
+      margin-bottom:30px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:14px;
+      font-weight:600;
+      transition:0.3s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 30px rgba(56,189,248,0.25);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.15);
+      color:#f8fafc;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover{
+      border-color:#38bdf8;
+      color:#38bdf8;
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:28px;
+      padding:32px;
+      box-shadow:0 25px 80px rgba(0,0,0,0.35);
+    }
+
+    .hero-card .mini{
+      color:#38bdf8;
+      font-size:0.9rem;
+      margin-bottom:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .hero-card h3{
+      font-size:1.5rem;
+      margin-bottom:10px;
+      color:#f8fafc;
+    }
+
+    .hero-card p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(56,189,248,0.12);
+      border:1px solid rgba(56,189,248,0.25);
+      color:#7dd3fc;
+      font-size:0.9rem;
+    }
+
+    /* SECTIONS */
+    section{
+      padding: 90px 0;
+    }
+
+    .section-title{
+      font-size:2rem;
+      margin-bottom:12px;
+      color:#f8fafc;
+    }
+
+    .section-subtitle{
+      color:#94a3b8;
+      margin-bottom:38px;
+      max-width:700px;
+    }
+
+    /* ABOUT */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:28px;
+    }
+
+    .card{
+      background: rgba(15, 23, 42, 0.7);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 12px 35px rgba(0,0,0,0.18);
+    }
+
+    .card h3{
+      color:#f8fafc;
+      margin-bottom:14px;
+      font-size:1.2rem;
+    }
+
+    .card p{
+      color:#cbd5e1;
+    }
+
+    /* SKILLS */
+    .skills-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:22px;
+    }
+
+    .skill-box{
+      background:#111c34;
+      border:1px solid rgba(255,255,255,0.07);
+      padding:22px;
+      border-radius:20px;
+    }
+
+    .skill-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:12px;
+      font-weight:600;
+      color:#f8fafc;
+    }
+
+    .skill-bar{
+      width:100%;
+      height:10px;
+      background:#1e293b;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .skill-fill{
+      height:100%;
+      border-radius:999px;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    }
+
+    /* EXPERIENCE */
+    .timeline{
+      display:grid;
+      gap:22px;
+    }
+
+    .timeline-item{
+      background:#111c34;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:28px;
+      border-radius:22px;
+      position:relative;
+    }
+
+    .timeline-item h3{
+      color:#f8fafc;
+      margin-bottom:6px;
+    }
+
+    .timeline-item .meta{
+      color:#38bdf8;
+      font-size:0.95rem;
+      margin-bottom:14px;
+    }
+
+    .timeline-item p,
+    .timeline-item li{
+      color:#cbd5e1;
+    }
+
+    .timeline-item ul{
+      padding-left:18px;
+      margin-top:12px;
+    }
+
+    /* CONTACT */
+    .contact-box{
+      text-align:center;
+      padding:38px;
+      background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(255,255,255,0.02));
+      border:1px solid rgba(56,189,248,0.18);
+      border-radius:26px;
+    }
+
+    .contact-box h3{
+      font-size:1.7rem;
+      margin-bottom:12px;
+      color:#f8fafc;
+    }
+
+    .contact-box p{
+      color:#cbd5e1;
+      margin-bottom:18px;
+    }
+
+    .contact-links{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .contact-pill{
+      padding:12px 18px;
+      border-radius:999px;
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,0.1);
+      color:#e2e8f0;
+    }
+
+    .contact-pill:hover{
+      border-color:#38bdf8;
+      color:#38bdf8;
+      transition:0.3s;
+    }
+
+    footer{
+      padding:28px 0 40px;
+      text-align:center;
+      color:#94a3b8;
+      font-size:0.95rem;
+    }
+
+    @media (max-width: 900px){
+      .hero-content,
+      .about-grid,
+      .skills-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-text h1{
+        font-size:2.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Adam<span>.</span> Boudaoud</div>
+        <ul class="nav-links">
+          <li><a href="#about">Profil</a></li>
+          <li><a href="#skills">Compétences</a></li>
+          <li><a href="#experience">Expériences</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Adam <span>Boudaoud</span></h1>
+          <p>
+            Alternant en informatique orienté support IT, infrastructure digitale et digital workplace.
+            J’interviens sur l’administration des postes, le support utilisateurs, la gestion MDM,
+            ainsi que l’optimisation d’environnements Microsoft 365.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#experience" class="btn btn-primary">Voir mon parcours</a>
+            <a href="#contact" class="btn btn-secondary">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mini">profil</div>
+          <h3>IT Support & Digital Workplace</h3>
+          <p>
+            Apprenti IT Infrastructure & Digital Workplace Administrator avec une expérience en
+            support technique, administration MDM, gestion de parc et accompagnement utilisateurs.
+          </p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Microsoft Intune</span>
+            <span class="tag">Jamf Pro</span>
+            <span class="tag">ServiceNow</span>
+            <span class="tag">Microsoft 365</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">À propos</h2>
+        <p class="section-subtitle">
+          Je construis mon parcours dans l’informatique avec une forte appétence pour le support,
+          la gestion d’environnements de travail modernes et l’accompagnement des utilisateurs.
+        </p>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Mon objectif</h3>
+            <p>
+              Développer une expertise solide en infrastructure IT, support utilisateurs et administration
+              des outils collaboratifs, tout en apportant des solutions concrètes et efficaces sur le terrain.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Ce que j’apporte</h3>
+            <p>
+              Rigueur, sens du service, capacité d’adaptation et bonne compréhension des besoins utilisateurs.
+              J’aime intervenir aussi bien sur les aspects techniques que sur l’amélioration de l’expérience digitale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Compétences</h2>
+        <p class="section-subtitle">
+          Un socle de compétences techniques orienté support, administration et environnement digital workplace.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>HTML</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:90%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>CSS</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>Microsoft Intune</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>Jamf Pro</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:75%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>ServiceNow</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:80%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>Support IT</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:90%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>Microsoft 365 / Office 365</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-top">
+              <span>Gestion de parc informatique</span>
+              <span>82%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:82%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Expériences</h2>
+        <p class="section-subtitle">
+          Un parcours en entreprise construit autour du support, de l’administration IT et de l’accompagnement des utilisateurs.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Apprenti IT Infrastructure & Digital Workplace Administrator</h3>
+            <div class="meta">VusionGroup · sept. 2025 - aujourd’hui</div>
+            <p>
+              Administration de l’environnement digital workplace et amélioration continue des services IT.
+            </p>
+            <ul>
+              <li>Administration Microsoft Intune et Jamf Pro</li>
+              <li>Supervision des appareils et amélioration du portail applicatif</li>
+              <li>Diagnostic et résolution d’incidents utilisateurs</li>
+              <li>Sensibilisation des utilisateurs aux bonnes pratiques</li>
+              <li>Optimisation des services Microsoft 365 et Office 365</li>
+              <li>Participation aux projets de migration et d’évolution d’infrastructures</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Alternant informatique BTS SIO</h3>
+            <div class="meta">VusionGroup · sept. 2023 - aujourd’hui</div>
+            <p>
+              Support de proximité, gestion des tickets et administration du parc informatique.
+            </p>
+            <ul>
+              <li>Gestion des tickets niveaux 1 et 2 via ServiceNow</li>
+              <li>Installation et configuration des postes de travail</li>
+              <li>Support utilisateurs sur site (SAP, Salesforce)</li>
+              <li>Inventaire du parc informatique</li>
+              <li>Gestion des licences</li>
+              <li>Help Desk</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Assistant responsable informatique</h3>
+            <div class="meta">Edmond de Rothschild · janv. 2023 - févr. 2023</div>
+            <ul>
+              <li>Configuration d’un switch</li>
+              <li>Mises à jour du BIOS et des antivirus</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Assistant responsable informatique</h3>
+            <div class="meta">Ministère de la Culture · mai 2022 - juin 2022</div>
+            <ul>
+              <li>Installation de matériel pour les visioconférences</li>
+              <li>Sauvegarde de données</li>
+              <li>Maintenance du parc d’imprimantes</li>
+              <li>Déploiement des smartphones des agents</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Assistant informatique</h3>
+            <div class="meta">Edmond de Rothschild · mai 2021 - juin 2021</div>
+            <ul>
+              <li>Installation de matériels et postes utilisateurs</li>
+              <li>Mise à jour de logiciels</li>
+              <li>Dépannage et sécurisation</li>
+              <li>Mises à jour Apple et masterisation</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Assistant informatique</h3>
+            <div class="meta">ANYSSA SOLUTIONS · mars 2018</div>
+            <ul>
+              <li>Découverte de la sécurité informatique et de la cybersécurité</li>
+              <li>Intégration, audits et assistance technique</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h3>Travaillons ensemble</h3>
+          <p>
+            Disponible pour une alternance, une opportunité IT ou pour échanger autour de mon profil.
+          </p>
+
+          <div class="contact-links">
+            <a href="#" class="contact-pill">adam.boudaoud@email.com</a>
+            <a href="#" class="contact-pill">06 00 00 00 00</a>
+            <a href="#" class="contact-pill">LinkedIn</a>
+            <a href="#" class="contact-pill">Paris, France</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Adam Boudaoud — Portfolio HTML & CSS
+  </footer>
+
+</body>
+</html>
